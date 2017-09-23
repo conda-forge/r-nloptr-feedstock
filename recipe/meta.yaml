@@ -25,14 +25,9 @@ build:
 requirements:
   build:
     - r-base
-    - {{native}}nlopt
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
 
   run:
     - r-base
-    - {{native}}nlopt
 
 test:
   commands:
