@@ -15,7 +15,7 @@ source:
   sha256: 84225b993cb1ef7854edda9629858662cc8592b0d1344baadea4177486ece1eb
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win32]
 
   rpaths:
@@ -25,14 +25,14 @@ build:
 requirements:
   build:
     - r-base
-    - {{native}}nlopt
+    - {{native}}nlopt      # [win]
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
 
   run:
     - r-base
-    - {{native}}nlopt
+    - {{native}}nlopt      # [win]
 
 test:
   commands:
@@ -55,3 +55,4 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - jdblischak
