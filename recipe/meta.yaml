@@ -13,6 +13,8 @@ source:
     - https://cran.r-project.org/src/contrib/nloptr_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
   sha256: 84225b993cb1ef7854edda9629858662cc8592b0d1344baadea4177486ece1eb
+  patches:
+    - 0001-download-nlopt-w-curl.patch
 
 build:
   number: 1
