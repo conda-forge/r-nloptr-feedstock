@@ -52,9 +52,12 @@ about:
     and compiled from the NLopt website.'
 
   license_family: LGPL
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\LGPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
     - jdblischak
+    - rvalieris
