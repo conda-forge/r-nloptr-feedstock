@@ -1,0 +1,22 @@
+--- a/configure	2017-08-22 07:59:12.000000000 -0300
++++ b/configure	2018-01-16 16:41:25.378540069 -0200
+@@ -3298,7 +3298,7 @@
+ 
+    ## Download NLopt source code
+    ## curl -O http://ab-initio.mit.edu/nlopt/nlopt-${NLOPT_VERSION}.tar.gz
+-   $("${R_HOME}/bin/Rscript" --vanilla -e "download.file(url='${NLOPT_URL}', destfile='${NLOPT_TGZ}')")
++   $("${R_HOME}/bin/Rscript" --vanilla -e "download.file(url='${NLOPT_URL}', destfile='${NLOPT_TGZ}', method='curl', extra='-L')")
+ 
+    ## Extract NLopt source code and remove .tar.gz
+    ## tar -xzvf nlopt-${NLOPT_VERSION}.tar.gz
+--- a/configure.ac	2014-08-02 15:11:56.000000000 -0300
++++ b/configure.ac	2018-01-16 16:40:42.258540446 -0200
+@@ -123,7 +123,7 @@
+ 
+    ## Download NLopt source code
+    ## curl -O http://ab-initio.mit.edu/nlopt/nlopt-${NLOPT_VERSION}.tar.gz
+-   $("${R_HOME}/bin/Rscript" --vanilla -e "download.file(url='${NLOPT_URL}', destfile='${NLOPT_TGZ}')")
++   $("${R_HOME}/bin/Rscript" --vanilla -e "download.file(url='${NLOPT_URL}', destfile='${NLOPT_TGZ}', method='curl', extra='-L')")
+ 
+    ## Extract NLopt source code and remove .tar.gz
+    ## tar -xzvf nlopt-${NLOPT_VERSION}.tar.gz

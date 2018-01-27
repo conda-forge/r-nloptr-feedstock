@@ -13,9 +13,11 @@ source:
     - https://cran.r-project.org/src/contrib/nloptr_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
   sha256: 84225b993cb1ef7854edda9629858662cc8592b0d1344baadea4177486ece1eb
+  patches:
+    - 0001-download-nlopt-w-curl.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win32]
 
   rpaths:
@@ -25,14 +27,14 @@ build:
 requirements:
   build:
     - r-base
-    - {{native}}nlopt
+    - {{native}}nlopt      # [win]
     - posix                # [win]
     - {{native}}toolchain  # [win]
     - gcc                  # [not win]
 
   run:
     - r-base
-    - {{native}}nlopt
+    - {{native}}nlopt      # [win]
 
 test:
   commands:
@@ -50,8 +52,12 @@ about:
     and compiled from the NLopt website.'
 
   license_family: LGPL
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\LGPL-3'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - jdblischak
+    - rvalieris
