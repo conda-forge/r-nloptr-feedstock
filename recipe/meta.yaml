@@ -17,7 +17,8 @@ source:
     - 0001-download-nlopt-w-curl.patch
 
 build:
-  number: 1
+  merge_build_host: True  # [win]
+  number: 2
   skip: true  # [win32]
 
   rpaths:
@@ -26,11 +27,14 @@ build:
 
 requirements:
   build:
+    - posix                # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('cxx') }}        # [unix]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+  host:
     - r-base
     - {{native}}nlopt      # [win]
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
 
   run:
     - r-base
