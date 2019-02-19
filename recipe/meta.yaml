@@ -1,4 +1,4 @@
-{% set version = '1.0.4' %}
+{% set version = "1.2.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,13 +11,13 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/nloptr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
-  sha256: 84225b993cb1ef7854edda9629858662cc8592b0d1344baadea4177486ece1eb
+  sha256: 1f86e33ecde6c3b0d2098c47591a9cd0fa41fb973ebf5145859677492730df97
   patches:
     - 0001-download-nlopt-w-curl.patch
 
 build:
   merge_build_host: True  # [win]
-  number: 1003
+  number: 0
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
