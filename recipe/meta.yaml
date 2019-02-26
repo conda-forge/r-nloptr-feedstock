@@ -12,8 +12,6 @@ source:
     - {{ cran_mirror }}/src/contrib/nloptr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
   sha256: 1f86e33ecde6c3b0d2098c47591a9cd0fa41fb973ebf5145859677492730df97
-  patches:
-    - 0001-download-nlopt-w-curl.patch
 
 build:
   merge_build_host: True  # [win]
