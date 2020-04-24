@@ -27,23 +27,23 @@ requirements:
     - {{ compiler('cxx') }}      # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('m2w64_cxx') }}        # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}sed               # [win]
-    - {{posix}}grep              # [win]
-    - {{posix}}autoconf
-    - {{posix}}automake          # [not win]
-    - {{posix}}automake-wrapper  # [win]
-    - {{posix}}pkg-config
-    - {{posix}}make
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}sed               # [win]
+    - {{ posix }}grep              # [win]
+    - {{ posix }}autoconf
+    - {{ posix }}automake          # [not win]
+    - {{ posix }}automake-wrapper  # [win]
+    - {{ posix }}pkg-config
+    - {{ posix }}make
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
-    - {{native}}nlopt            # [win]
+    - {{ native }}nlopt            # [win]
   run:
     - r-base
-    - {{native}}nlopt            # [win]
-    - {{native}}gcc-libs         # [win]
+    - {{ native }}nlopt            # [win]
+    - {{ native }}gcc-libs         # [win]
 
 test:
   commands:
@@ -52,19 +52,15 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=nloptr
-  license: LGPL-3
+  license: LGPL-3.0
   summary: ' nloptr is an R interface to NLopt. NLopt is a free/open-source library for nonlinear optimization, providing a common interface for a number of different
     free optimization routines available online as well as original implementations of various other algorithms. See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction
     for more information on the available algorithms. During installation on Unix the NLopt code is downloaded and compiled from the NLopt website.'
   license_family: LGPL
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3
 
 extra:
   recipe-maintainers:
     - conda-forge/r
     - rvalieris
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
