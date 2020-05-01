@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '8'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,14 +11,14 @@ cran_mirror:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '8'
 docker_image:
-- condaforge/linux-anvil-comp7
+- condaforge/linux-anvil-ppc64le
 pin_run_as_build:
   r-base:
     min_pin: x.x
     max_pin: x.x
 r_base:
-- 3.5.1
+- '4.0'
 target_platform:
-- linux-64
+- linux-ppc64le
