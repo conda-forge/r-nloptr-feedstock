@@ -1,4 +1,4 @@
-{% set version = "1.2.2.2" %}
+{% set version = "1.2.2.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,26 +7,26 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: nloptr_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/nloptr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
-  sha256: e80ea9619ac18f4bfe44812198b40b9ae5c0ddf3f9cc91778f9ccc82168d1372
+  sha256: af08b74fd5e7b4cb455fe67ed759346cbb8f3b9a4178f5f117e0092e5c9af6ff
 
 build:
   merge_build_host: true  # [win]
   number: 0
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('m2w64_cxx') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('fortran') }}        # [not win]
+    - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -37,6 +37,7 @@ requirements:
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - {{ native }}nlopt            # [win]
@@ -52,9 +53,15 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=nloptr
-  license: LGPL-3.0
-  summary: ' nloptr is an R interface to NLopt. NLopt is a free/open-source library for nonlinear optimization, providing a common interface for a number of different free optimization routines available online as well as original implementations of various other algorithms. See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction
-    for more information on the available algorithms. During installation on Unix the NLopt code is downloaded and compiled from the NLopt website.'
+  license: LGPL-3.0-only
+  summary: Solve optimization problems using an R interface to NLopt. NLopt is a free/open-source
+    library for nonlinear optimization, providing a common interface for a number of
+    different free optimization routines available online as well as original implementations
+    of various other algorithms. See <http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction>
+    for more information on the available algorithms. During installation of nloptr
+    on Unix-based systems, the installer checks whether the NLopt library is installed
+    on the system. If the NLopt library cannot be found, the code is compiled using
+    the NLopt source included in the nloptr package.
   license_family: LGPL
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3
