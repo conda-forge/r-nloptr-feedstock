@@ -1,4 +1,4 @@
-{% set version = "1.2.2.2" %}
+{% set version = "1.2.2.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -11,7 +11,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/nloptr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
-  sha256: e80ea9619ac18f4bfe44812198b40b9ae5c0ddf3f9cc91778f9ccc82168d1372
+  sha256: af08b74fd5e7b4cb455fe67ed759346cbb8f3b9a4178f5f117e0092e5c9af6ff
 
 build:
   merge_build_host: true  # [win]
