@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: nloptr_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/nloptr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
@@ -22,10 +21,12 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('m2w64_cxx') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('fortran') }}        # [not win]
+    - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
@@ -36,6 +37,7 @@ requirements:
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - {{ native }}nlopt            # [win]
@@ -51,9 +53,15 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=nloptr
-  license: LGPL-3.0
-  summary: ' nloptr is an R interface to NLopt. NLopt is a free/open-source library for nonlinear optimization, providing a common interface for a number of different free optimization routines available online as well as original implementations of various other algorithms. See http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction
-    for more information on the available algorithms. During installation on Unix the NLopt code is downloaded and compiled from the NLopt website.'
+  license: LGPL-3.0-only
+  summary: Solve optimization problems using an R interface to NLopt. NLopt is a free/open-source
+    library for nonlinear optimization, providing a common interface for a number of
+    different free optimization routines available online as well as original implementations
+    of various other algorithms. See <http://ab-initio.mit.edu/wiki/index.php/NLopt_Introduction>
+    for more information on the available algorithms. During installation of nloptr
+    on Unix-based systems, the installer checks whether the NLopt library is installed
+    on the system. If the NLopt library cannot be found, the code is compiled using
+    the NLopt source included in the nloptr package.
   license_family: LGPL
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/LGPL-3
