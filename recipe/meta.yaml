@@ -68,5 +68,6 @@ about:
 
 extra:
   recipe-maintainers:
+    - colinbrislawn
     - conda-forge/r
     - rvalieris
