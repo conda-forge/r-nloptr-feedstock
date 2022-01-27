@@ -3,7 +3,7 @@ About r-nloptr
 
 Home: https://CRAN.R-project.org/package=nloptr
 
-Package license: LGPL-3.0-only
+Package license: LGPL-3.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-nloptr-feedstock/blob/master/LICENSE.txt)
 
