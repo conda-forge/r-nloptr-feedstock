@@ -41,10 +41,10 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - {{ native }}nlopt            # [win]
+    - {{ native }}nlopt
   run:
     - r-base
-    - {{ native }}nlopt            # [win]
+    - {{ native }}nlopt
     - {{ native }}gcc-libs         # [win]
 
 test:
