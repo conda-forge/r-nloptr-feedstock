@@ -42,12 +42,10 @@ requirements:
   host:
     - r-base
     - {{ native }}nlopt            # [win]
-    - nlopt                        # [unix]
   run:
     - r-base
     - {{ native }}nlopt            # [win]
     - {{ native }}gcc-libs         # [win]
-    - nlopt                        # [unix]
 
 test:
   commands:
