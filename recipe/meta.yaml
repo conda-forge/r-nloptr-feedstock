@@ -14,13 +14,15 @@ source:
 
 build:
   merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('cxx') }}            # [not win]
@@ -37,13 +39,12 @@ requirements:
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
-    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - {{ native }}nlopt            # [win]
+    - {{ native }}nlopt
   run:
     - r-base
-    - {{ native }}nlopt            # [win]
+    - {{ native }}nlopt
     - {{ native }}gcc-libs         # [win]
 
 test:
@@ -70,3 +71,5 @@ extra:
   recipe-maintainers:
     - conda-forge/r
     - rvalieris
+    - mfansler
+    - colinbrislawn
