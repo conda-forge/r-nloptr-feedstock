@@ -41,6 +41,7 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-testthat
     - {{ native }}nlopt
   run:
     - r-base
