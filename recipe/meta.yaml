@@ -49,9 +49,13 @@ requirements:
     - {{ native }}gcc-libs         # [win]
 
 test:
+  requires:
+    - r-testthat
   commands:
-    - $R -e "library('nloptr')"           # [not win]
-    - "\"%R%\" -e \"library('nloptr')\""  # [win]
+    - $R -e "library('nloptr')"                          # [not win]
+    - $R -e "testthat::test_package('nloptr')"           # [not win]
+    - "\"%R%\" -e \"library('nloptr')\""                 # [win]
+    - "\"%R%\" -e \"testthat::test_package('nloptr')\""  # [win]
 
 about:
   home: https://CRAN.R-project.org/package=nloptr
