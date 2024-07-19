@@ -1,9 +1,15 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 c_compiler:
 - clang
 c_compiler_version:
-- '15'
+- '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,13 +19,15 @@ cran_mirror:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '15'
+- '16'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '12'
 macos_machine:
 - arm64-apple-darwin20.0.0
+nlopt:
+- '2.7'
 pin_run_as_build:
   r-base:
     min_pin: x.x
