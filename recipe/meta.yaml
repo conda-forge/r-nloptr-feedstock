@@ -12,15 +12,15 @@ source:
   sha256: 4cdaf55dfdeb090119f2c2ca77f617962524654da4511bacd650f62bb6dad8ea
 
 build:
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
-    - gnuconfig  # [unix]
+    - cross-r-base {{ r_base }}        # [build_platform != target_platform]
+    - gnuconfig                        # [unix]
     - {{ compiler('c') }}              # [not win]
     - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
@@ -29,19 +29,18 @@ requirements:
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ compiler('fortran') }}        # [not win]
     - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ posix }}filesystem        # [win]
-    - {{ posix }}sed               # [win]
-    - {{ posix }}grep              # [win]
+    - {{ posix }}filesystem            # [win]
+    - {{ posix }}sed                   # [win]
+    - {{ posix }}grep                  # [win]
     - {{ posix }}autoconf
-    - {{ posix }}automake          # [not win]
-    - {{ posix }}automake-wrapper  # [win]
-    - {{ posix }}pkg-config
+    - {{ posix }}automake              # [not win]
+    - {{ posix }}automake-wrapper      # [win]
+    - pkg-config
     - {{ posix }}make
-    - {{ posix }}coreutils         # [win]
-    - {{ posix }}zip               # [win]
+    - {{ posix }}coreutils             # [win]
+    - {{ posix }}zip                   # [win]
   host:
     - r-base
-    - r-testthat
     - nlopt
   run:
     - r-base
@@ -49,12 +48,12 @@ requirements:
 
 test:
   requires:
-    - r-testthat
+    - r-tinytest
   commands:
     - $R -e "library('nloptr')"                          # [not win]
-    - $R -e "testthat::test_package('nloptr')"           # [not win]
+    - $R -e "tinytest::test_package('nloptr')"           # [not win]
     - "\"%R%\" -e \"library('nloptr')\""                 # [win]
-    - "\"%R%\" -e \"testthat::test_package('nloptr')\""  # [win]
+    - "\"%R%\" -e \"tinytest::test_package('nloptr')\""  # [win]
 
 about:
   home: https://CRAN.R-project.org/package=nloptr
