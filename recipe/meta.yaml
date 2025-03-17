@@ -1,4 +1,4 @@
-{% set version = "2.2.0" %}
+{% set version = "2.2.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/nloptr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/nloptr/nloptr_{{ version }}.tar.gz
-  sha256: 257e897c87e2df6bc5e6d6b077cde06bd3c9704319f56822d170a7a33ea5b788
+  sha256: 76ba40750b475c8b1ad6a86c9e05f0c1746af16d965235ff9293953920aed7f4
 
 build:
   number: 0
