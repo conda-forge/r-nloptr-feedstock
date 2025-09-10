@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -19,15 +19,15 @@ cran_mirror:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '13'
+- '14'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 nlopt:
-- '2.9'
+- '2.10'
 pin_run_as_build:
   r-base:
     min_pin: x.x
